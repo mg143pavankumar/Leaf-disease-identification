@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
+import 'package:get/get.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:plant_disease_detector/services/disease_provider.dart';
 import 'package:plant_disease_detector/src/home_page/home.dart';
@@ -14,6 +16,9 @@ Future main() async {
 
   await Hive.openBox<Disease>('plant_diseases');
 
+  SystemChrome.setPreferredOrientations(
+      [DeviceOrientation.portraitDown, DeviceOrientation.portraitUp]);
+
   runApp(const MyApp());
 }
 
@@ -24,7 +29,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return ChangeNotifierProvider<DiseaseService>(
       create: (context) => DiseaseService(),
-      child: MaterialApp(
+      child: GetMaterialApp(
         debugShowCheckedModeBanner: false,
         title: 'Detect diseases',
         theme: ThemeData(primarySwatch: Colors.green, fontFamily: 'SFRegular'),
@@ -36,6 +41,7 @@ class MyApp extends StatelessWidget {
                   case Suggestions.routeName:
                     return const Suggestions();
                   case Home.routeName:
+
                   default:
                     return const OnBoadingScreen();
                 }

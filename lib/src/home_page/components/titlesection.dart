@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:plant_disease_detector/constants/constants.dart';
+import 'package:plant_disease_detector/constants/dimensions.dart';
 
 class TitleSection extends SliverFixedExtentList {
   TitleSection(String title, double height, {Key? key})
@@ -11,13 +12,18 @@ class TitleSection extends SliverFixedExtentList {
                 mainAxisAlignment: MainAxisAlignment.center,
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-              Padding(
-                padding: EdgeInsets.fromLTRB((0.32*height), 0, 0, 0),
-                child: Text(
-                  title,
-                  style: TextStyle(fontSize: (0.6*height), fontFamily: 'SFBold', color: kMain),
-                ),
-              ),
+                  Padding(
+                    padding: EdgeInsets.only(
+                        top: Dimensions.height20, left: Dimensions.width20),
+                    child: Text(
+                      title,
+                      style: TextStyle(
+                        fontSize: Dimensions.font26,
+                        fontFamily: 'SFBold',
+                        color: AppColors.kMain,
+                      ),
+                    ),
+                  ),
                 ],
               );
             },
