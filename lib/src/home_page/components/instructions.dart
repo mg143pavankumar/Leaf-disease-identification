@@ -16,7 +16,7 @@ class InstructionsSection extends SliverFixedExtentList {
                 child: Container(
                   height: size.height * 0.26,
                   decoration: BoxDecoration(
-                    color: kSecondary,
+                    color: AppColors.kMain,
                     borderRadius:
                         BorderRadius.circular((0.061 * size.height * 0.26)),
                   ),
@@ -27,27 +27,31 @@ class InstructionsSection extends SliverFixedExtentList {
                       children: const [
                         ListTile(
                             leading: CircleAvatar(
-                              backgroundColor: kMain,
+                              backgroundColor: AppColors.kAccentLight,
                               child: Text(
                                 '1',
-                                style: TextStyle(color: kWhite),
+                                style: TextStyle(color: AppColors.kWhite),
                               ),
                             ),
                             title: Text(
                               'Capture a photo of an affected plant by tapping the camera button below.',
-                              style: TextStyle(color: kWhite),
+                              style: TextStyle(color: AppColors.kWhite),
                             )),
                         ListTile(
                           leading: CircleAvatar(
-                            backgroundColor: kMain,
+                            backgroundColor: AppColors.kAccentLight,
                             child: Text(
                               '2',
-                              style: TextStyle(color: kWhite),
+                              style: TextStyle(
+                                color: AppColors.kWhite,
+                              ),
                             ),
                           ),
                           title: Text(
                               'Please wait until for the model to identify the disease and give you a solution for the disease.',
-                              style: TextStyle(color: kWhite)),
+                              style: TextStyle(
+                                color: AppColors.kWhite,
+                              )),
                         ),
                         ListTile(
                           title: Text(''),

@@ -4,6 +4,7 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:hive/hive.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:plant_disease_detector/constants/constants.dart';
+import 'package:plant_disease_detector/constants/dimensions.dart';
 import 'package:plant_disease_detector/services/classify.dart';
 import 'package:plant_disease_detector/services/disease_provider.dart';
 import 'package:plant_disease_detector/services/hive_database.dart';
@@ -53,10 +54,10 @@ class _HomeState extends State<Home> {
           SpeedDialChild(
             child: const FaIcon(
               FontAwesomeIcons.file,
-              color: kWhite,
+              color: AppColors.kWhite,
             ),
             label: "Choose image",
-            backgroundColor: kMain,
+            backgroundColor: AppColors.kMain,
             onTap: () async {
               late double _confidence;
               await classifier.getDisease(ImageSource.gallery).then((value) {
@@ -87,10 +88,10 @@ class _HomeState extends State<Home> {
           SpeedDialChild(
             child: const FaIcon(
               FontAwesomeIcons.camera,
-              color: kWhite,
+              color: AppColors.kWhite,
             ),
             label: "Take photo",
-            backgroundColor: kMain,
+            backgroundColor: AppColors.kMain,
             onTap: () async {
               late double _confidence;
 
@@ -129,7 +130,7 @@ class _HomeState extends State<Home> {
         ),
         child: CustomScrollView(
           slivers: [
-            GreetingSection(size.height * 0.2),
+            GreetingSection(Dimensions.height45 * 3.5),
             TitleSection('Instructions', size.height * 0.066),
             InstructionsSection(size),
             TitleSection('History', size.height * 0.066),
