@@ -1,69 +1,80 @@
 import 'package:flutter/material.dart';
 import 'package:plant_disease_detector/constants/constants.dart';
+import 'package:plant_disease_detector/constants/dimensions.dart';
+import 'package:plant_disease_detector/src/widgets/small_text.dart';
 
-class InstructionsSection extends SliverFixedExtentList {
-  InstructionsSection(Size size, {Key? key})
-      : super(
-          key: key,
-          delegate: SliverChildBuilderDelegate(
-            (BuildContext context, index) {
-              return Padding(
-                padding: EdgeInsets.fromLTRB(
-                    (0.061 * size.height * 0.26),
-                    (0.071 * size.height * 0.26),
-                    (0.076 * size.height * 0.26),
-                    (0.061 * size.height * 0.26)),
-                child: Container(
-                  height: size.height * 0.26,
-                  decoration: BoxDecoration(
-                    color: AppColors.kMain,
-                    borderRadius:
-                        BorderRadius.circular((0.061 * size.height * 0.26)),
-                  ),
-                  child: Padding(
-                    padding: EdgeInsets.fromLTRB((0.025 * size.height * 0.26),
-                        0, 0, (0.025 * size.height * 0.26)),
-                    child: ListView(
-                      children: const [
-                        ListTile(
-                            leading: CircleAvatar(
-                              backgroundColor: AppColors.kAccentLight,
-                              child: Text(
-                                '1',
-                                style: TextStyle(color: AppColors.kWhite),
-                              ),
-                            ),
-                            title: Text(
-                              'Capture a photo of an affected plant by tapping the camera button below.',
-                              style: TextStyle(color: AppColors.kWhite),
-                            )),
-                        ListTile(
-                          leading: CircleAvatar(
-                            backgroundColor: AppColors.kAccentLight,
-                            child: Text(
-                              '2',
-                              style: TextStyle(
-                                color: AppColors.kWhite,
-                              ),
-                            ),
-                          ),
-                          title: Text(
-                              'Please wait until for the model to identify the disease and give you a solution for the disease.',
-                              style: TextStyle(
-                                color: AppColors.kWhite,
-                              )),
-                        ),
-                        ListTile(
-                          title: Text(''),
-                        ),
-                      ],
-                    ),
-                  ),
+class InstructionsSection extends StatelessWidget {
+  const InstructionsSection({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      margin: EdgeInsets.symmetric(
+        horizontal: Dimensions.width20,
+      ),
+      height: Dimensions.height45 * 4.5,
+      child: ListView(
+        children: [
+          Card(
+            elevation: 8,
+            color: AppColors.kMain,
+            child: ListTile(
+              leading: CircleAvatar(
+                backgroundColor: AppColors.kAccentLight,
+                child: Text(
+                  '1',
+                  style: TextStyle(color: AppColors.kWhite),
                 ),
-              );
-            },
-            childCount: 1,
+              ),
+              title: SmallText(
+                text:
+                    "Capture a photo of an affected plant by tapping the camera button below.",
+                color: AppColors.kWhite,
+                size: Dimensions.font16,
+              ),
+            ),
           ),
-          itemExtent: size.height * 0.26,
-        );
+          Card(
+            elevation: 8,
+            color: AppColors.kMain,
+            child: ListTile(
+              leading: CircleAvatar(
+                backgroundColor: AppColors.kAccentLight,
+                child: Text(
+                  '1',
+                  style: TextStyle(color: AppColors.kWhite),
+                ),
+              ),
+              title: SmallText(
+                text:
+                    "Please wait until for the model to identify the disease and give you a solution for the disease.",
+                color: AppColors.kWhite,
+                size: Dimensions.font16,
+              ),
+            ),
+          ),
+        ],
+      ),
+    );
+  }
 }
+
+/*
+
+ListTile(
+            tileColor: AppColors.kMain,
+            leading: CircleAvatar(
+              backgroundColor: AppColors.kAccentLight,
+              child: Text(
+                '1',
+                style: TextStyle(color: AppColors.kWhite),
+              ),
+            ),
+            title: SmallText(
+              text:
+                  "Capture a photo of an affected plant by tapping the camera button below.",
+              color: AppColors.kWhite,
+              size: Dimensions.font16,
+            ),
+          ),
+ */

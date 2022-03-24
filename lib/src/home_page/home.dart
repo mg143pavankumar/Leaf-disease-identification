@@ -1,142 +1,86 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_speed_dial/flutter_speed_dial.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:hive/hive.dart';
-import 'package:image_picker/image_picker.dart';
+
 import 'package:plant_disease_detector/constants/constants.dart';
-import 'package:plant_disease_detector/constants/dimensions.dart';
-import 'package:plant_disease_detector/services/classify.dart';
-import 'package:plant_disease_detector/services/disease_provider.dart';
-import 'package:plant_disease_detector/services/hive_database.dart';
-import 'package:plant_disease_detector/src/home_page/components/greeting.dart';
-import 'package:plant_disease_detector/src/home_page/components/history.dart';
-import 'package:plant_disease_detector/src/home_page/components/instructions.dart';
-import 'package:plant_disease_detector/src/home_page/components/titlesection.dart';
-import 'package:plant_disease_detector/src/home_page/models/disease_model.dart';
-import 'package:plant_disease_detector/src/suggestions_page/suggestions.dart';
-import 'package:provider/provider.dart';
+
+import 'package:plant_disease_detector/src/home_page/components/hidden_drawer.dart';
+import 'package:plant_disease_detector/src/home_page/components/home_screen.dart';
 
 class Home extends StatefulWidget {
   const Home({Key? key}) : super(key: key);
-
   static const routeName = '/';
-
   @override
   State<Home> createState() => _HomeState();
 }
 
 class _HomeState extends State<Home> {
-  @override
-  void dispose() {
-    Hive.close();
-    super.dispose();
-  }
+  double xOffset = 0, yOffset = 0, rotateAngle = 0, scaleFactor = 0;
+  bool isDrawerOpen = false;
 
   @override
   Widget build(BuildContext context) {
-    // Get disease from provider
-    final _diseaseService = Provider.of<DiseaseService>(context);
-
-    // Hive service
-    HiveService _hiveService = HiveService();
-
-    // Data
-    Size size = MediaQuery.of(context).size;
-    final Classifier classifier = Classifier();
-    late Disease _disease;
-
     return Scaffold(
+      backgroundColor: Colors.transparent,
       floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
-      floatingActionButton: SpeedDial(
-        icon: Icons.camera_alt,
-        spacing: 10,
+      floatingActionButton: FloatingActionButton(
+        child: Icon(
+          isDrawerOpen ? Icons.arrow_back_ios : Icons.menu,
+          color: AppColors.kWhite,
+        ),
+        onPressed: () {
+          if (isDrawerOpen) {
+            setState(() {
+              xOffset = 0;
+              yOffset = 0;
+              scaleFactor = 1;
+              rotateAngle = 0;
+              isDrawerOpen = false;
+            });
+          } else {
+            setState(() {
+              xOffset = 260;
+              yOffset = 170;
+              scaleFactor = 0.7;
+              rotateAngle = -0.1;
+              isDrawerOpen = true;
+            });
+          }
+        },
+      ),
+      body: Stack(
         children: [
-          SpeedDialChild(
-            child: const FaIcon(
-              FontAwesomeIcons.file,
-              color: AppColors.kWhite,
+          HiddenDrawer(),
+          AnimatedContainer(
+            transform: Matrix4.translationValues(
+                xOffset - (isDrawerOpen ? 10 : 0),
+                yOffset + (isDrawerOpen ? 30 : 0),
+                0)
+              ..rotateZ(rotateAngle)
+              ..scale(scaleFactor - 0.07),
+            duration: const Duration(milliseconds: 250),
+            child: Container(
+              color: Color.fromARGB(109, 236, 253, 232),
             ),
-            label: "Choose image",
-            backgroundColor: AppColors.kMain,
-            onTap: () async {
-              late double _confidence;
-              await classifier.getDisease(ImageSource.gallery).then((value) {
-                _disease = Disease(
-                    name: value![0]["label"],
-                    imagePath: classifier.imageFile.path);
-
-                _confidence = value[0]['confidence'];
-              });
-              // Check confidence
-              if (_confidence > 0.8) {
-                // Set disease for Disease Service
-                _diseaseService.setDiseaseValue(_disease);
-
-                // Save disease
-                _hiveService.addDisease(_disease);
-
-                Navigator.restorablePushNamed(
-                  context,
-                  Suggestions.routeName,
-                );
-              } else {
-                // Display unsure message
-
-              }
-            },
           ),
-          SpeedDialChild(
-            child: const FaIcon(
-              FontAwesomeIcons.camera,
-              color: AppColors.kWhite,
+          AnimatedContainer(
+            transform: Matrix4.translationValues(
+                xOffset - (isDrawerOpen ? 20 : 0),
+                yOffset + (isDrawerOpen ? 55 : 0),
+                0)
+              ..rotateZ(rotateAngle)
+              ..scale(scaleFactor - (isDrawerOpen ? 0.12 : 0)),
+            duration: const Duration(milliseconds: 250),
+            child: Container(
+              color: Color.fromARGB(66, 236, 253, 232),
             ),
-            label: "Take photo",
-            backgroundColor: AppColors.kMain,
-            onTap: () async {
-              late double _confidence;
-
-              await classifier.getDisease(ImageSource.camera).then((value) {
-                _disease = Disease(
-                    name: value![0]["label"],
-                    imagePath: classifier.imageFile.path);
-
-                _confidence = value[0]['confidence'];
-              });
-
-              // Check confidence
-              if (_confidence > 0.8) {
-                // Set disease for Disease Service
-                _diseaseService.setDiseaseValue(_disease);
-
-                // Save disease
-                _hiveService.addDisease(_disease);
-
-                Navigator.restorablePushNamed(
-                  context,
-                  Suggestions.routeName,
-                );
-              } else {
-                // Display unsure message
-
-              }
-            },
+          ),
+          AnimatedContainer(
+            transform: Matrix4.translationValues(xOffset, yOffset, 0)
+              ..rotateZ(rotateAngle)
+              ..scale(scaleFactor),
+            duration: const Duration(milliseconds: 250),
+            child: Homescreen(),
           ),
         ],
-      ),
-      body: Container(
-        decoration: const BoxDecoration(
-          image: DecorationImage(
-              image: AssetImage('assets/images/bg.jpg'), fit: BoxFit.cover),
-        ),
-        child: CustomScrollView(
-          slivers: [
-            GreetingSection(Dimensions.height45 * 3.5),
-            TitleSection('Instructions', size.height * 0.066),
-            InstructionsSection(size),
-            TitleSection('History', size.height * 0.066),
-            HistorySection(size, context, _diseaseService)
-          ],
-        ),
       ),
     );
   }

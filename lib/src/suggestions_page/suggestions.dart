@@ -1,6 +1,7 @@
 import 'dart:io';
 
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:plant_disease_detector/constants/constants.dart';
 import 'package:plant_disease_detector/constants/dimensions.dart';
 import 'package:plant_disease_detector/services/disease_provider.dart';
@@ -70,12 +71,7 @@ class Suggestions extends StatelessWidget {
                 children: [
                   InkWell(
                     onTap: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (_) => Home(),
-                        ),
-                      );
+                      Get.back();
                     },
                     child: AppIcon(
                       size: Dimensions.height45,

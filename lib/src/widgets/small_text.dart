@@ -7,6 +7,7 @@ class SmallText extends StatelessWidget {
   final double height;
   final TextAlign? textAlign;
   final FontWeight? fontWeight;
+  final FontStyle? fontStyle;
 
   const SmallText({
     Key? key,
@@ -15,6 +16,7 @@ class SmallText extends StatelessWidget {
     required this.text,
     this.textAlign,
     this.fontWeight,
+    this.fontStyle,
     this.size = 12,
   }) : super(key: key);
 
@@ -22,11 +24,12 @@ class SmallText extends StatelessWidget {
   Widget build(BuildContext context) {
     return Text(
       text,
-      textAlign: TextAlign.left,
+      textAlign: TextAlign.justify,
       style: TextStyle(
         color: color,
         fontFamily: 'SFRegular',
         fontWeight: fontWeight,
+        fontStyle: fontStyle,
         fontSize: size,
         height: height,
       ),
