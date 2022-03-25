@@ -1,17 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:plant_disease_detector/constants/constants.dart';
 
+// ignore: must_be_immutable
 class TextProperty extends StatelessWidget {
-  TextProperty(
-      {Key? key,
-      required this.title,
-      required this.value,
-      this.valueTextSize = 0,
-      this.titleSize = 0,
-      this.titleColor = const Color(0xff626463),
-      this.titleTextAlign,
-      required this.height})
-      : super(key: key);
+  TextProperty({
+    Key? key,
+    required this.title,
+    required this.value,
+    this.valueTextSize = 0,
+    this.titleSize = 0,
+    this.titleColor = const Color(0xff626463),
+    this.titleTextAlign,
+    required this.height,
+  }) : super(key: key);
 
   final String title;
   double? titleSize, valueTextSize;

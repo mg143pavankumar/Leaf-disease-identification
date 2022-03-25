@@ -9,46 +9,88 @@ import 'package:plant_disease_detector/services/hive_database.dart';
 import 'package:plant_disease_detector/src/home_page/models/disease_model.dart';
 import 'package:plant_disease_detector/src/suggestions_page/suggestions.dart';
 
-class HistorySection extends SliverFixedExtentList {
-  HistorySection(Size size, BuildContext context, DiseaseService diseaseService,
-      {Key? key})
-      : super(
-          key: key,
-          delegate: SliverChildBuilderDelegate(
-            (BuildContext context, index) {
-              return ValueListenableBuilder<Box<Disease>>(
-                valueListenable: Boxes.getDiseases().listenable(),
-                builder: (context, box, _) {
-                  final diseases = box.values.toList().cast<Disease>();
+// class HistorySection extends SliverFixedExtentList {
+//   HistorySection(Size size, BuildContext context, DiseaseService diseaseService,
+//       {Key? key})
+//       : super(
+//           key: key,
+//           delegate: SliverChildBuilderDelegate(
+//             (BuildContext context, index) {
+//               return ValueListenableBuilder<Box<Disease>>(
+//                 valueListenable: Boxes.getDiseases().listenable(),
+//                 builder: (context, box, _) {
+//                   final diseases = box.values.toList().cast<Disease>();
 
-                  if (diseases.isNotEmpty) {
-                    return Padding(
-                      padding: EdgeInsets.fromLTRB((0.053 * size.height * 0.3),
-                          (0.053 * size.height * 0.3), 0, 0),
-                      child: SizedBox(
-                          width: size.width,
-                          child: ListView.builder(
-                            itemCount: diseases.length,
-                            padding: EdgeInsets.symmetric(
-                                vertical: (0.035 * size.height * 0.3)),
-                            itemExtent: size.width * 0.9,
-                            scrollDirection: Axis.horizontal,
-                            itemBuilder: (context, index) {
-                              return _returnHistoryContainer(diseases[index],
-                                  context, diseaseService, size);
-                            },
-                          )),
-                    );
-                  } else {
-                    return _returnNothingToShow(size);
-                  }
+//                   if (diseases.isNotEmpty) {
+//                     return Padding(
+//                       padding: EdgeInsets.fromLTRB((0.053 * size.height * 0.3),
+//                           (0.053 * size.height * 0.3), 0, 0),
+//                       child: SizedBox(
+//                           width: size.width,
+//                           child: ListView.builder(
+//                             itemCount: diseases.length,
+//                             padding: EdgeInsets.symmetric(
+//                                 vertical: (0.035 * size.height * 0.3)),
+//                             itemExtent: size.width * 0.9,
+//                             scrollDirection: Axis.horizontal,
+//                             itemBuilder: (context, index) {
+//                               return _returnHistoryContainer(diseases[index],
+//                                   context, diseaseService, size);
+//                             },
+//                           )),
+//                     );
+//                   } else {
+//                     return _returnNothingToShow(size);
+//                   }
+//                 },
+//               );
+//             },
+//             childCount: 1,
+//           ),
+//           itemExtent: size.height * 0.3,
+//         );
+// }
+
+class HistorySection extends StatefulWidget {
+  final Size size;
+  final DiseaseService diseaseService;
+
+  const HistorySection(
+      {Key? key, required this.size, required this.diseaseService})
+      : super(key: key);
+
+  @override
+  State<HistorySection> createState() => _HistorySectionState();
+}
+
+class _HistorySectionState extends State<HistorySection> {
+  @override
+  Widget build(BuildContext context) {
+    return ValueListenableBuilder<Box<Disease>>(
+      valueListenable: Boxes.getDiseases().listenable(),
+      builder: (context, box, _) {
+        final diseases = box.values.toList().cast<Disease>();
+
+        if (diseases.isNotEmpty) {
+          return SizedBox(
+              width: widget.size.width,
+              height: Dimensions.height45 * 5,
+              child: ListView.builder(
+                physics: BouncingScrollPhysics(),
+                itemCount: diseases.length,
+                itemExtent: widget.size.width * 0.9,
+                scrollDirection: Axis.horizontal,
+                itemBuilder: (context, index) {
+                  return _returnHistoryContainer(diseases[index], context,
+                      widget.diseaseService, widget.size);
                 },
-              );
-            },
-            childCount: 1,
-          ),
-          itemExtent: size.height * 0.3,
-        );
+              ));
+        } else {
+          return _returnNothingToShow(widget.size);
+        }
+      },
+    );
+  }
 }
 
 Widget _returnHistoryContainer(Disease disease, BuildContext context,
@@ -67,6 +109,8 @@ Widget _returnHistoryContainer(Disease disease, BuildContext context,
         );
       },
       child: Container(
+          height: 500,
+          width: 500,
           decoration: BoxDecoration(
               image: DecorationImage(
                 image: Image.file(
@@ -113,19 +157,17 @@ Widget _returnNothingToShow(Size size) {
     padding: EdgeInsets.fromLTRB((0.053 * size.height * 0.3),
         (0.053 * size.height * 0.3), (0.053 * size.height * 0.3), 0),
     child: Container(
+        height: Dimensions.height45 * 4.5,
         decoration: BoxDecoration(
             color: AppColors.kMain,
             borderRadius: BorderRadius.circular((0.053 * size.height * 0.3))),
-        child: Padding(
-          padding: EdgeInsets.fromLTRB(0, 0, 0, (0.066 * size.height * 0.3)),
-          child: Center(
-              child: Text(
-            'Nothing to show',
-            style: TextStyle(
-              color: AppColors.kWhite,
-              fontSize: Dimensions.font20,
-            ),
-          )),
-        )),
+        child: Center(
+            child: Text(
+          'Nothing to show',
+          style: TextStyle(
+            color: AppColors.kWhite,
+            fontSize: Dimensions.font20,
+          ),
+        ))),
   );
 }

@@ -180,6 +180,8 @@ class _OnBoadingScreenState extends State<OnBoadingScreen> {
                     builder: (context) => Home(),
                   ),
                 );
+
+                setState(() {});
               },
               child: Container(
                 height: 60,

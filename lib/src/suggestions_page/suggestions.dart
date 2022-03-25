@@ -1,10 +1,10 @@
 import 'dart:io';
 
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:plant_disease_detector/constants/constants.dart';
 import 'package:plant_disease_detector/constants/dimensions.dart';
 import 'package:plant_disease_detector/services/disease_provider.dart';
-import 'package:plant_disease_detector/src/home_page/home.dart';
 import 'package:plant_disease_detector/src/home_page/models/disease_model.dart';
 import 'package:plant_disease_detector/src/suggestions_page/components/plant_image.dart';
 import 'package:plant_disease_detector/src/widgets/app_icon.dart';
@@ -70,12 +70,7 @@ class Suggestions extends StatelessWidget {
                 children: [
                   InkWell(
                     onTap: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (_) => Home(),
-                        ),
-                      );
+                      Get.back();
                     },
                     child: AppIcon(
                       size: Dimensions.height45,
