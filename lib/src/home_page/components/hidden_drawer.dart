@@ -28,8 +28,6 @@ class _HiddenDrawerState extends State<HiddenDrawer> {
     // Hive service
     HiveService _hiveService = HiveService();
 
-    // Data
-    Size size = MediaQuery.of(context).size;
     final Classifier classifier = Classifier();
     late Disease _disease;
 

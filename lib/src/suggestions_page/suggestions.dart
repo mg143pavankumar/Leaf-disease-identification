@@ -5,7 +5,6 @@ import 'package:get/get.dart';
 import 'package:plant_disease_detector/constants/constants.dart';
 import 'package:plant_disease_detector/constants/dimensions.dart';
 import 'package:plant_disease_detector/services/disease_provider.dart';
-import 'package:plant_disease_detector/src/home_page/home.dart';
 import 'package:plant_disease_detector/src/home_page/models/disease_model.dart';
 import 'package:plant_disease_detector/src/suggestions_page/components/plant_image.dart';
 import 'package:plant_disease_detector/src/widgets/app_icon.dart';

@@ -1,14 +1,9 @@
 import 'package:flutter/material.dart';
 
 import 'package:plant_disease_detector/constants/constants.dart';
-import 'package:plant_disease_detector/services/classify.dart';
-import 'package:plant_disease_detector/services/disease_provider.dart';
-import 'package:plant_disease_detector/services/hive_database.dart';
 
 import 'package:plant_disease_detector/src/home_page/components/hidden_drawer.dart';
 import 'package:plant_disease_detector/src/home_page/components/home_screen.dart';
-import 'package:plant_disease_detector/src/home_page/models/disease_model.dart';
-import 'package:provider/provider.dart';
 
 class Home extends StatefulWidget {
   const Home({Key? key}) : super(key: key);

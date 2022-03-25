@@ -1,13 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:plant_disease_detector/constants/dimensions.dart';
-import 'package:plant_disease_detector/services/classify.dart';
 import 'package:plant_disease_detector/services/disease_provider.dart';
-import 'package:plant_disease_detector/services/hive_database.dart';
 import 'package:plant_disease_detector/src/home_page/components/greeting.dart';
 import 'package:plant_disease_detector/src/home_page/components/history.dart';
 import 'package:plant_disease_detector/src/home_page/components/instructions.dart';
 import 'package:plant_disease_detector/src/home_page/components/titlesection.dart';
-import 'package:plant_disease_detector/src/home_page/models/disease_model.dart';
 import 'package:plant_disease_detector/src/widgets/spacing.dart';
 import 'package:provider/provider.dart';
 
