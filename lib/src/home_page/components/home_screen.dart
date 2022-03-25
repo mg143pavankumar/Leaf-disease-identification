@@ -24,13 +24,8 @@ class _HomescreenState extends State<Homescreen> {
     // Get disease from provider
     final _diseaseService = Provider.of<DiseaseService>(context);
 
-    // Hive service
-    HiveService _hiveService = HiveService();
-
     // Data
     Size size = MediaQuery.of(context).size;
-    final Classifier classifier = Classifier();
-    late Disease _disease;
 
     return Container(
         decoration: const BoxDecoration(

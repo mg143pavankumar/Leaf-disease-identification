@@ -41,7 +41,7 @@ class InstructionsSection extends StatelessWidget {
               leading: CircleAvatar(
                 backgroundColor: AppColors.kAccentLight,
                 child: Text(
-                  '1',
+                  '2',
                   style: TextStyle(color: AppColors.kWhite),
                 ),
               ),
@@ -58,23 +58,3 @@ class InstructionsSection extends StatelessWidget {
     );
   }
 }
-
-/*
-
-ListTile(
-            tileColor: AppColors.kMain,
-            leading: CircleAvatar(
-              backgroundColor: AppColors.kAccentLight,
-              child: Text(
-                '1',
-                style: TextStyle(color: AppColors.kWhite),
-              ),
-            ),
-            title: SmallText(
-              text:
-                  "Capture a photo of an affected plant by tapping the camera button below.",
-              color: AppColors.kWhite,
-              size: Dimensions.font16,
-            ),
-          ),
- */

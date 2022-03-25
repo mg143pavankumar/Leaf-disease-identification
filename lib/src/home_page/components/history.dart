@@ -157,19 +157,17 @@ Widget _returnNothingToShow(Size size) {
     padding: EdgeInsets.fromLTRB((0.053 * size.height * 0.3),
         (0.053 * size.height * 0.3), (0.053 * size.height * 0.3), 0),
     child: Container(
+        height: Dimensions.height45 * 4.5,
         decoration: BoxDecoration(
             color: AppColors.kMain,
             borderRadius: BorderRadius.circular((0.053 * size.height * 0.3))),
-        child: Padding(
-          padding: EdgeInsets.fromLTRB(0, 0, 0, (0.066 * size.height * 0.3)),
-          child: Center(
-              child: Text(
-            'Nothing to show',
-            style: TextStyle(
-              color: AppColors.kWhite,
-              fontSize: Dimensions.font20,
-            ),
-          )),
-        )),
+        child: Center(
+            child: Text(
+          'Nothing to show',
+          style: TextStyle(
+            color: AppColors.kWhite,
+            fontSize: Dimensions.font20,
+          ),
+        ))),
   );
 }
