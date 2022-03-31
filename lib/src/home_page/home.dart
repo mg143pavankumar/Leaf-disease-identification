@@ -17,7 +17,8 @@ class _HomeState extends State<Home> {
   bool isDrawerOpen = false, isLoading = true;
 
   Future<void> loading() async {
-    await Future.delayed(const Duration(seconds: 1));
+    await Future.delayed(const Duration(milliseconds: 3000));
+
     setState(() {
       isLoading = false;
     });
@@ -28,6 +29,7 @@ class _HomeState extends State<Home> {
     loading();
 
     return Scaffold(
+      backgroundColor: AppColors.kWhite,
       floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
       floatingActionButton: FloatingActionButton(
         child: Icon(
@@ -54,46 +56,47 @@ class _HomeState extends State<Home> {
           }
         },
       ),
-      body: isLoading
-          ? Center(
-              child: CircularProgressIndicator(),
-            )
-          : Stack(
-              children: [
-                isDrawerOpen ? HiddenDrawer() : HiddenDrawer(),
-                AnimatedContainer(
-                  transform: Matrix4.translationValues(
-                      xOffset - (isDrawerOpen ? 10 : 0),
-                      yOffset + (isDrawerOpen ? 30 : 0),
-                      0)
-                    ..rotateZ(rotateAngle)
-                    ..scale(scaleFactor - (isDrawerOpen ? 0.07 : 0)),
-                  duration: const Duration(milliseconds: 250),
-                  child: Container(
-                    color: Color.fromARGB(109, 236, 253, 232),
-                  ),
-                ),
-                AnimatedContainer(
-                  transform: Matrix4.translationValues(
-                      xOffset - (isDrawerOpen ? 20 : 0),
-                      yOffset + (isDrawerOpen ? 55 : 0),
-                      0)
-                    ..rotateZ(rotateAngle)
-                    ..scale(scaleFactor - (isDrawerOpen ? 0.12 : 0)),
-                  duration: const Duration(milliseconds: 250),
-                  child: Container(
-                    color: Color.fromARGB(66, 236, 253, 232),
-                  ),
-                ),
-                AnimatedContainer(
-                  transform: Matrix4.translationValues(xOffset, yOffset, 0)
-                    ..rotateZ(rotateAngle)
-                    ..scale(scaleFactor),
-                  duration: const Duration(milliseconds: 250),
-                  child: Homescreen(),
-                ),
-              ],
+      body: Stack(
+        children: [
+          HiddenDrawer(),
+          AnimatedContainer(
+            transform: Matrix4.translationValues(
+                xOffset - (isDrawerOpen ? 10 : 0),
+                yOffset + (isDrawerOpen ? 30 : 0),
+                0)
+              ..rotateZ(rotateAngle)
+              ..scale(scaleFactor - (isDrawerOpen ? 0.07 : 0)),
+            duration: const Duration(milliseconds: 250),
+            child: Container(
+              color: Color.fromARGB(109, 236, 253, 232),
             ),
+          ),
+          AnimatedContainer(
+            transform: Matrix4.translationValues(
+                xOffset - (isDrawerOpen ? 20 : 0),
+                yOffset + (isDrawerOpen ? 55 : 0),
+                0)
+              ..rotateZ(rotateAngle)
+              ..scale(scaleFactor - (isDrawerOpen ? 0.12 : 0)),
+            duration: const Duration(milliseconds: 250),
+            child: Container(
+              color: Color.fromARGB(66, 236, 253, 232),
+            ),
+          ),
+
+          // HiddenDrawer(),
+          // Homescreen(),
+
+          AnimatedContainer(
+            alignment: Alignment.topCenter,
+            transform: Matrix4.translationValues(xOffset, yOffset, 0)
+              ..rotateZ(rotateAngle)
+              ..scale(scaleFactor),
+            duration: const Duration(milliseconds: 250),
+            child: Homescreen(),
+          )
+        ],
+      ),
     );
   }
 }

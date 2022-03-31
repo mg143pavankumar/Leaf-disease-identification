@@ -45,7 +45,7 @@ class MyApp extends StatelessWidget {
                   default:
                     return const OnBoadingScreen();
                 }
-              });
+              },);
         },
       ),
     );

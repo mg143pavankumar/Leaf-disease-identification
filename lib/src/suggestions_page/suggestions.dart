@@ -103,7 +103,6 @@ class Suggestions extends StatelessWidget {
                 child: Container(
                   padding: EdgeInsets.symmetric(
                     horizontal: Dimensions.width15,
-                    vertical: Dimensions.height20,
                   ),
                   width: double.maxFinite,
                   decoration: BoxDecoration(
@@ -122,6 +121,7 @@ class Suggestions extends StatelessWidget {
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
+                      verticalSpacing(Dimensions.height10 * 2),
                       Divider(
                         thickness: Dimensions.height10 / 2,
                         color: Color.fromARGB(172, 255, 255, 255),
@@ -150,20 +150,24 @@ class Suggestions extends StatelessWidget {
                         child: Container(
                           height: 500,
                           child: Container(
-                            child: Column(
-                              children: [
-                                SuggestionCard(
-                                    title: "Possible causes",
-                                    value: _disease.possibleCauses,
-                                    assetImagePath:
-                                        "assets/images/icon-leaf.png"),
-                                verticalSpacing(Dimensions.height15),
-                                SuggestionCard(
-                                    title: "Possible Solution",
-                                    value: _disease.possibleSolution,
-                                    assetImagePath:
-                                        "assets/images/solution.png"),
-                              ],
+                            child: SingleChildScrollView(
+                              physics: AlwaysScrollableScrollPhysics(
+                                  parent: BouncingScrollPhysics()),
+                              child: Column(
+                                children: [
+                                  SuggestionCard(
+                                      title: "Possible causes",
+                                      value: _disease.possibleCauses,
+                                      assetImagePath:
+                                          "assets/images/icon-leaf.png"),
+                                  verticalSpacing(Dimensions.height15),
+                                  SuggestionCard(
+                                      title: "Possible Solution",
+                                      value: _disease.possibleSolution,
+                                      assetImagePath:
+                                          "assets/images/solution.png"),
+                                ],
+                              ),
                             ),
                           ),
                         ),
