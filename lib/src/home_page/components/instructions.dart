@@ -13,47 +13,50 @@ class InstructionsSection extends StatelessWidget {
         horizontal: Dimensions.width20,
       ),
       height: Dimensions.height45 * 4.5,
-      child: ListView(
-        children: [
-          Card(
-            elevation: 8,
-            color: AppColors.kMain,
-            child: ListTile(
-              leading: CircleAvatar(
-                backgroundColor: AppColors.kAccentLight,
-                child: Text(
-                  '1',
-                  style: TextStyle(color: AppColors.kWhite),
+      child: ScrollConfiguration(
+        behavior: MaterialScrollBehavior().copyWith(overscroll: false),
+        child: ListView(
+          children: [
+            Card(
+              elevation: 8,
+              color: AppColors.kMain,
+              child: ListTile(
+                leading: CircleAvatar(
+                  backgroundColor: AppColors.kAccentLight,
+                  child: Text(
+                    '1',
+                    style: TextStyle(color: AppColors.kWhite),
+                  ),
+                ),
+                title: SmallText(
+                  text:
+                      "Capture a photo of an affected plant by tapping the camera button below.",
+                  color: AppColors.kWhite,
+                  size: Dimensions.font16,
                 ),
               ),
-              title: SmallText(
-                text:
-                    "Capture a photo of an affected plant by tapping the camera button below.",
-                color: AppColors.kWhite,
-                size: Dimensions.font16,
-              ),
             ),
-          ),
-          Card(
-            elevation: 8,
-            color: AppColors.kMain,
-            child: ListTile(
-              leading: CircleAvatar(
-                backgroundColor: AppColors.kAccentLight,
-                child: Text(
-                  '2',
-                  style: TextStyle(color: AppColors.kWhite),
+            Card(
+              elevation: 8,
+              color: AppColors.kMain,
+              child: ListTile(
+                leading: CircleAvatar(
+                  backgroundColor: AppColors.kAccentLight,
+                  child: Text(
+                    '2',
+                    style: TextStyle(color: AppColors.kWhite),
+                  ),
+                ),
+                title: SmallText(
+                  text:
+                      "Please wait until for the model to identify the disease and give you a solution for the disease.",
+                  color: AppColors.kWhite,
+                  size: Dimensions.font16,
                 ),
               ),
-              title: SmallText(
-                text:
-                    "Please wait until for the model to identify the disease and give you a solution for the disease.",
-                color: AppColors.kWhite,
-                size: Dimensions.font16,
-              ),
             ),
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }

@@ -9,48 +9,6 @@ import 'package:plant_disease_detector/services/hive_database.dart';
 import 'package:plant_disease_detector/src/home_page/models/disease_model.dart';
 import 'package:plant_disease_detector/src/suggestions_page/suggestions.dart';
 
-// class HistorySection extends SliverFixedExtentList {
-//   HistorySection(Size size, BuildContext context, DiseaseService diseaseService,
-//       {Key? key})
-//       : super(
-//           key: key,
-//           delegate: SliverChildBuilderDelegate(
-//             (BuildContext context, index) {
-//               return ValueListenableBuilder<Box<Disease>>(
-//                 valueListenable: Boxes.getDiseases().listenable(),
-//                 builder: (context, box, _) {
-//                   final diseases = box.values.toList().cast<Disease>();
-
-//                   if (diseases.isNotEmpty) {
-//                     return Padding(
-//                       padding: EdgeInsets.fromLTRB((0.053 * size.height * 0.3),
-//                           (0.053 * size.height * 0.3), 0, 0),
-//                       child: SizedBox(
-//                           width: size.width,
-//                           child: ListView.builder(
-//                             itemCount: diseases.length,
-//                             padding: EdgeInsets.symmetric(
-//                                 vertical: (0.035 * size.height * 0.3)),
-//                             itemExtent: size.width * 0.9,
-//                             scrollDirection: Axis.horizontal,
-//                             itemBuilder: (context, index) {
-//                               return _returnHistoryContainer(diseases[index],
-//                                   context, diseaseService, size);
-//                             },
-//                           )),
-//                     );
-//                   } else {
-//                     return _returnNothingToShow(size);
-//                   }
-//                 },
-//               );
-//             },
-//             childCount: 1,
-//           ),
-//           itemExtent: size.height * 0.3,
-//         );
-// }
-
 class HistorySection extends StatefulWidget {
   final Size size;
   final DiseaseService diseaseService;
