@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:plant_disease_detector/constants/constants.dart';
 import 'package:plant_disease_detector/constants/dimensions.dart';
+import 'package:plant_disease_detector/helper/lang_controller.dart';
 import 'package:plant_disease_detector/src/widgets/small_text.dart';
 
 class InstructionsSection extends StatelessWidget {
@@ -16,25 +18,26 @@ class InstructionsSection extends StatelessWidget {
       child: ScrollConfiguration(
         behavior: MaterialScrollBehavior().copyWith(overscroll: false),
         child: ListView(
+          physics: BouncingScrollPhysics(),
           children: [
             Card(
               elevation: 8,
               color: AppColors.kMain,
               child: ListTile(
-                leading: CircleAvatar(
-                  backgroundColor: AppColors.kAccentLight,
-                  child: Text(
-                    '1',
-                    style: TextStyle(color: AppColors.kWhite),
+                  leading: CircleAvatar(
+                    backgroundColor: AppColors.kAccentLight,
+                    child: Text(
+                      '1',
+                      style: TextStyle(color: AppColors.kWhite),
+                    ),
                   ),
-                ),
-                title: SmallText(
-                  text:
-                      "Capture a photo of an affected plant by tapping the camera button below.",
-                  color: AppColors.kWhite,
-                  size: Dimensions.font16,
-                ),
-              ),
+                  title: GetBuilder<LangController>(
+                    builder: (langController) => SmallText(
+                      text: langController.getInstruction1,
+                      color: AppColors.kWhite,
+                      size: Dimensions.font16,
+                    ),
+                  )),
             ),
             Card(
               elevation: 8,
@@ -47,11 +50,12 @@ class InstructionsSection extends StatelessWidget {
                     style: TextStyle(color: AppColors.kWhite),
                   ),
                 ),
-                title: SmallText(
-                  text:
-                      "Please wait until for the model to identify the disease and give you a solution for the disease.",
-                  color: AppColors.kWhite,
-                  size: Dimensions.font16,
+                title: GetBuilder<LangController>(
+                  builder: (langController) => SmallText(
+                    text: langController.getInstruction2,
+                    color: AppColors.kWhite,
+                    size: Dimensions.font16,
+                  ),
                 ),
               ),
             ),

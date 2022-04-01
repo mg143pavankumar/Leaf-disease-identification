@@ -35,17 +35,18 @@ class MyApp extends StatelessWidget {
         theme: ThemeData(primarySwatch: Colors.green, fontFamily: 'SFRegular'),
         onGenerateRoute: (RouteSettings routeSettings) {
           return MaterialPageRoute<void>(
-              settings: routeSettings,
-              builder: (BuildContext context) {
-                switch (routeSettings.name) {
-                  case Suggestions.routeName:
-                    return const Suggestions();
-                  case Home.routeName:
+            settings: routeSettings,
+            builder: (BuildContext context) {
+              switch (routeSettings.name) {
+                case Suggestions.routeName:
+                  return const Suggestions();
+                case Home.routeName:
 
-                  default:
-                    return const OnBoadingScreen();
-                }
-              },);
+                default:
+                  return const OnBoadingScreen();
+              }
+            },
+          );
         },
       ),
     );

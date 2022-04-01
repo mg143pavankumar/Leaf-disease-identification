@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:plant_disease_detector/constants/constants.dart';
 import 'package:plant_disease_detector/constants/dimensions.dart';
+import 'package:plant_disease_detector/helper/lang_controller.dart';
 
 class GreetingSection extends StatelessWidget {
   const GreetingSection({Key? key}) : super(key: key);
@@ -19,8 +21,9 @@ class GreetingSection extends StatelessWidget {
             bottomRight: Radius.circular(Dimensions.radius30)),
       ),
       child: Center(
-        child: Text(
-          'Leaf disease identification by Team Introspectors',
+          child: GetBuilder<LangController>(
+        builder: (langController) => Text(
+          langController.getTitle,
           textAlign: TextAlign.center,
           style: TextStyle(
             fontFamily: 'Montserrat',
@@ -28,7 +31,7 @@ class GreetingSection extends StatelessWidget {
             color: AppColors.kWhite,
           ),
         ),
-      ),
+      )),
     );
   }
 }
