@@ -1,8 +1,6 @@
 import 'dart:io';
 
-import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:plant_disease_detector/constants/constants.dart';
 import 'package:plant_disease_detector/constants/dimensions.dart';
@@ -11,6 +9,7 @@ import 'package:plant_disease_detector/services/disease_provider.dart';
 import 'package:plant_disease_detector/services/hive_database.dart';
 import 'package:plant_disease_detector/src/home_page/models/disease_model.dart';
 import 'package:plant_disease_detector/src/suggestions_page/suggestions.dart';
+import "package:get/get.dart";
 
 class HistorySection extends StatefulWidget {
   final Size size;
@@ -34,12 +33,12 @@ class _HistorySectionState extends State<HistorySection> {
 
         if (diseases.isNotEmpty) {
           return SizedBox(
-              width: widget.size.width,
+              width: double.maxFinite,
               height: Dimensions.height45 * 5,
               child: ListView.builder(
                 physics: BouncingScrollPhysics(),
                 itemCount: diseases.length,
-                itemExtent: widget.size.width * 0.9,
+                itemExtent: widget.size.width * 0.98,
                 scrollDirection: Axis.horizontal,
                 itemBuilder: (context, index) {
                   return _returnHistoryContainer(diseases[index], context,
@@ -58,7 +57,7 @@ Widget _returnHistoryContainer(Disease disease, BuildContext context,
     DiseaseService diseaseService, Size size) {
   return Padding(
     padding: EdgeInsets.fromLTRB(
-        (0.053 * size.height * 0.55), 0, (0.053 * size.height * 0.3), 0),
+        (0.053 * size.height * 0.55), 0, (0.053 * size.height * 0.5), 0),
     child: GestureDetector(
       onTap: () {
         // Set disease for Disease Service
@@ -70,45 +69,48 @@ Widget _returnHistoryContainer(Disease disease, BuildContext context,
         );
       },
       child: Container(
-          height: 500,
-          width: 500,
-          decoration: BoxDecoration(
-              image: DecorationImage(
-                image: Image.file(
-                  File(disease.imagePath),
-                ).image,
-                fit: BoxFit.cover,
-              ),
-              boxShadow: [
-                BoxShadow(
-                  color: AppColors.kAccent,
-                  spreadRadius: 0.5,
-                  blurRadius: (0.022 * size.height * 0.3),
-                ),
-              ],
-              color: AppColors.kSecondary,
-              borderRadius: BorderRadius.circular((0.053 * size.height * 0.3))),
-          child: Center(
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.center,
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Text('Disease: ${disease.name}',
-                    style: TextStyle(
-                      color: AppColors.kWhite,
-                      fontSize: (0.066 * size.height * 0.3),
-                      fontFamily: 'SFBold',
-                    )),
-                Text(
-                    'Date: ${disease.dateTime.day}/${disease.dateTime.month}/${disease.dateTime.year}',
-                    style: TextStyle(
-                      color: AppColors.kWhite,
-                      fontSize: (0.066 * size.height * 0.3),
-                      fontFamily: 'SFBold',
-                    )),
-              ],
+        height: 500,
+        width: 500,
+        decoration: BoxDecoration(
+            image: DecorationImage(
+              image: Image.file(
+                File(disease.imagePath),
+              ).image,
+              fit: BoxFit.cover,
             ),
-          )),
+            boxShadow: [
+              BoxShadow(
+                color: AppColors.kAccent,
+                spreadRadius: 0.5,
+                blurRadius: (0.022 * size.height * 0.3),
+              ),
+            ],
+            color: AppColors.kSecondary,
+            borderRadius: BorderRadius.circular((0.053 * size.height * 0.3))),
+        child: Center(
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.center,
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              GetBuilder<LangController>(builder: (langController) {
+                return Text('Disease: ' + langController.getDiseaseName,
+                    style: TextStyle(
+                      color: AppColors.kWhite,
+                      fontSize: (0.066 * size.height * 0.3),
+                      fontFamily: 'SFBold',
+                    ));
+              }),
+              Text(
+                  'Date: ${disease.dateTime.day}/${disease.dateTime.month}/${disease.dateTime.year}',
+                  style: TextStyle(
+                    color: AppColors.kWhite,
+                    fontSize: (0.066 * size.height * 0.3),
+                    fontFamily: 'SFBold',
+                  )),
+            ],
+          ),
+        ),
+      ),
     ),
   );
 }
@@ -124,7 +126,7 @@ Widget _returnNothingToShow(Size size) {
             borderRadius: BorderRadius.circular((0.053 * size.height * 0.3))),
         child: Center(
             child: Text(
-          "Nothing to show",
+          "nothingToShow".tr,
           style: TextStyle(
             color: AppColors.kWhite,
             fontSize: Dimensions.font20,

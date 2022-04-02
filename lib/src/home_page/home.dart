@@ -47,7 +47,7 @@ class _HomeState extends State<Home> {
             });
           } else {
             setState(() {
-              xOffset = 260;
+              xOffset = 280;
               yOffset = 170;
               scaleFactor = 0.7;
               rotateAngle = -0.1;

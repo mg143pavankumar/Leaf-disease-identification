@@ -1,9 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 import 'package:plant_disease_detector/constants/constants.dart';
 import 'package:plant_disease_detector/constants/dimensions.dart';
-import 'package:plant_disease_detector/helper/lang_controller.dart';
-import 'package:easy_localization/easy_localization.dart';
 
 class GreetingSection extends StatelessWidget {
   const GreetingSection({Key? key}) : super(key: key);
