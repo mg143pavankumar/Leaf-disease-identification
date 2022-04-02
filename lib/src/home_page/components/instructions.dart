@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:plant_disease_detector/constants/constants.dart';
 import 'package:plant_disease_detector/constants/dimensions.dart';
 import 'package:plant_disease_detector/src/widgets/small_text.dart';
+import 'package:get/get.dart';
 
 class InstructionsSection extends StatelessWidget {
   const InstructionsSection({Key? key}) : super(key: key);
@@ -16,6 +17,7 @@ class InstructionsSection extends StatelessWidget {
       child: ScrollConfiguration(
         behavior: MaterialScrollBehavior().copyWith(overscroll: false),
         child: ListView(
+          physics: BouncingScrollPhysics(),
           children: [
             Card(
               elevation: 8,
@@ -29,8 +31,7 @@ class InstructionsSection extends StatelessWidget {
                   ),
                 ),
                 title: SmallText(
-                  text:
-                      "Capture a photo of an affected plant by tapping the camera button below.",
+                  text: "instruction1".tr,
                   color: AppColors.kWhite,
                   size: Dimensions.font16,
                 ),
@@ -48,8 +49,7 @@ class InstructionsSection extends StatelessWidget {
                   ),
                 ),
                 title: SmallText(
-                  text:
-                      "Please wait until for the model to identify the disease and give you a solution for the disease.",
+                  text: 'instruction2'.tr,
                   color: AppColors.kWhite,
                   size: Dimensions.font16,
                 ),

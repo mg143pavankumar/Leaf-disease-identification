@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:plant_disease_detector/constants/constants.dart';
 import 'package:plant_disease_detector/constants/dimensions.dart';
+import 'package:plant_disease_detector/helper/lang_controller.dart';
 import 'package:plant_disease_detector/services/disease_provider.dart';
 import 'package:plant_disease_detector/src/home_page/models/disease_model.dart';
 import 'package:plant_disease_detector/src/suggestions_page/components/plant_image.dart';
@@ -14,10 +15,17 @@ import 'package:plant_disease_detector/src/widgets/spacing.dart';
 import 'package:plant_disease_detector/src/widgets/suggestion_card.dart';
 import 'package:provider/provider.dart';
 
-class Suggestions extends StatelessWidget {
+class Suggestions extends StatefulWidget {
   const Suggestions({Key? key}) : super(key: key);
 
   static const routeName = '/suggestions';
+
+  @override
+  State<Suggestions> createState() => _SuggestionsState();
+}
+
+class _SuggestionsState extends State<Suggestions> {
+  LangController langController = Get.put(LangController());
 
   @override
   Widget build(BuildContext context) {
@@ -83,7 +91,7 @@ class Suggestions extends StatelessWidget {
                     Dimensions.screenWidth / 20,
                   ),
                   Text(
-                    "Suggestions",
+                    "suggestions".tr,
                     style: TextStyle(
                       fontSize: Dimensions.font20,
                       fontWeight: FontWeight.w600,

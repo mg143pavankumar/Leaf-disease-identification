@@ -1,9 +1,12 @@
 import 'dart:io';
 
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:plant_disease_detector/constants/constants.dart';
 import 'package:plant_disease_detector/constants/dimensions.dart';
+import 'package:plant_disease_detector/helper/lang_controller.dart';
 import 'package:plant_disease_detector/services/disease_provider.dart';
 import 'package:plant_disease_detector/services/hive_database.dart';
 import 'package:plant_disease_detector/src/home_page/models/disease_model.dart';
@@ -55,7 +58,7 @@ Widget _returnHistoryContainer(Disease disease, BuildContext context,
     DiseaseService diseaseService, Size size) {
   return Padding(
     padding: EdgeInsets.fromLTRB(
-        (0.053 * size.height * 0.3), 0, (0.053 * size.height * 0.3), 0),
+        (0.053 * size.height * 0.55), 0, (0.053 * size.height * 0.3), 0),
     child: GestureDetector(
       onTap: () {
         // Set disease for Disease Service
@@ -121,7 +124,7 @@ Widget _returnNothingToShow(Size size) {
             borderRadius: BorderRadius.circular((0.053 * size.height * 0.3))),
         child: Center(
             child: Text(
-          'Nothing to show',
+          "Nothing to show",
           style: TextStyle(
             color: AppColors.kWhite,
             fontSize: Dimensions.font20,
