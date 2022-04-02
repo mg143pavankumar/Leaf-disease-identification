@@ -14,6 +14,7 @@ import 'package:plant_disease_detector/src/widgets/small_text.dart';
 import 'package:plant_disease_detector/src/widgets/spacing.dart';
 import 'package:plant_disease_detector/src/widgets/suggestion_card.dart';
 import 'package:provider/provider.dart';
+import 'package:translator/translator.dart';
 
 class Suggestions extends StatefulWidget {
   const Suggestions({Key? key}) : super(key: key);
@@ -27,6 +28,8 @@ class Suggestions extends StatefulWidget {
 class _SuggestionsState extends State<Suggestions> {
   LangController langController = Get.put(LangController());
 
+  final translator = GoogleTranslator();
+
   @override
   Widget build(BuildContext context) {
     // Get disease from provider
@@ -34,6 +37,19 @@ class _SuggestionsState extends State<Suggestions> {
 
     Disease _disease = _diseaseService.disease;
     Size size = MediaQuery.of(context).size;
+
+    translator
+        .translate(_disease.name, to: langController.getLanguageCode)
+        .then((value) => langController.setDiseaseName(value.toString()));
+
+    translator
+        .translate(_disease.possibleCauses, to: langController.getLanguageCode)
+        .then((value) => langController.setPossibleCauses(value.toString()));
+
+    translator
+        .translate(_disease.possibleSolution,
+            to: langController.getLanguageCode)
+        .then((value) => langController.setPossibleSolution(value.toString()));
 
     return Scaffold(
       body: Container(
@@ -115,6 +131,11 @@ class _SuggestionsState extends State<Suggestions> {
                   width: double.maxFinite,
                   decoration: BoxDecoration(
                       color: AppColors.kMain,
+                      image: DecorationImage(
+                        image: AssetImage('assets/images/bg.jpg'),
+                        fit: BoxFit.cover,
+                        opacity: 0.06,
+                      ),
                       borderRadius: BorderRadius.only(
                         topLeft: Radius.circular(Dimensions.radius30),
                         topRight: Radius.circular(Dimensions.radius30),
@@ -138,17 +159,20 @@ class _SuggestionsState extends State<Suggestions> {
                       ),
                       verticalSpacing(Dimensions.height10 * 2),
                       Container(
-                        alignment: Alignment.center,
-                        child: BigText(
-                          text: _disease.name,
-                          color: AppColors.kWhite,
-                          size: Dimensions.font26,
-                          fontWeight: FontWeight.bold,
-                        ),
-                      ),
+                          alignment: Alignment.center,
+                          child: GetBuilder<LangController>(
+                            builder: (_) {
+                              return BigText(
+                                text: langController.getDiseaseName,
+                                color: AppColors.kWhite,
+                                size: Dimensions.font26,
+                                fontWeight: FontWeight.bold,
+                              );
+                            },
+                          )),
                       verticalSpacing(Dimensions.height10 * 2.5),
                       SmallText(
-                        text: "Quick Guide",
+                        text: "quickGuide".tr,
                         color: AppColors.kWhite,
                         size: Dimensions.font16 * 1.05,
                         fontWeight: FontWeight.w600,
@@ -163,17 +187,22 @@ class _SuggestionsState extends State<Suggestions> {
                                   parent: BouncingScrollPhysics()),
                               child: Column(
                                 children: [
-                                  SuggestionCard(
-                                      title: "Possible causes",
-                                      value: _disease.possibleCauses,
-                                      assetImagePath:
-                                          "assets/images/icon-leaf.png"),
+                                  GetBuilder<LangController>(builder: (_) {
+                                    return SuggestionCard(
+                                        title: "possibleCauses".tr,
+                                        value: langController.getPossibleCauses,
+                                        assetImagePath:
+                                            "assets/images/icon-leaf.png");
+                                  }),
                                   verticalSpacing(Dimensions.height15),
-                                  SuggestionCard(
-                                      title: "Possible Solution",
-                                      value: _disease.possibleSolution,
-                                      assetImagePath:
-                                          "assets/images/solution.png"),
+                                  GetBuilder<LangController>(builder: (_) {
+                                    return SuggestionCard(
+                                        title: "possibleSolution".tr,
+                                        value:
+                                            langController.getPossibleSolution,
+                                        assetImagePath:
+                                            "assets/images/solution.png");
+                                  })
                                 ],
                               ),
                             ),

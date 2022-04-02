@@ -51,7 +51,14 @@ class _HiddenDrawerState extends State<HiddenDrawer> {
     return Scaffold(
       key: this._scaffoldKey,
       body: Container(
-        color: Color.fromARGB(255, 2, 148, 46),
+        decoration: BoxDecoration(
+          image: DecorationImage(
+            image: AssetImage('assets/images/bg.jpg'),
+            fit: BoxFit.cover,
+            opacity: 0.1,
+          ),
+          color: Color.fromARGB(255, 2, 148, 46),
+        ),
         padding: EdgeInsets.symmetric(
           horizontal: Dimensions.height20,
           vertical: Dimensions.height45,
@@ -63,12 +70,8 @@ class _HiddenDrawerState extends State<HiddenDrawer> {
             : Column(
                 children: [
                   Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    mainAxisAlignment: MainAxisAlignment.end,
                     children: [
-                      Image.asset(
-                        "assets/images/plant.png",
-                        height: Dimensions.height45 * 1.2,
-                      ),
                       SmallText(
                         text: "version: 1.1",
                         fontStyle: FontStyle.italic,
@@ -82,6 +85,17 @@ class _HiddenDrawerState extends State<HiddenDrawer> {
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
+                        verticalSpacing(Dimensions.height45 * 1.5),
+                        Container(
+                          height: Dimensions.height45 * 3,
+                          width: Dimensions.height45 * 3,
+                          child: Center(
+                            child: Image.asset(
+                              "assets/images/plant.png",
+                              height: Dimensions.height45 * 2.5,
+                            ),
+                          ),
+                        ),
                         verticalSpacing(Dimensions.height45),
                         InkWell(
                             onTap: () => showModalBottomSheet(
@@ -146,20 +160,22 @@ class _HiddenDrawerState extends State<HiddenDrawer> {
                             ],
                           ),
                         ),
-                        verticalSpacing(Dimensions.height20),
+                        verticalSpacing(Dimensions.height30),
                         InkWell(
                           onTap: () async {
                             late double _confidence;
 
                             await classifier
                                 .getDisease(ImageSource.camera)
-                                .then((value) {
-                              _disease = Disease(
-                                  name: value![0]["label"],
-                                  imagePath: classifier.imageFile.path);
+                                .then(
+                              (value) {
+                                _disease = Disease(
+                                    name: value![0]["label"],
+                                    imagePath: classifier.imageFile.path);
 
-                              _confidence = value[0]['confidence'];
-                            });
+                                _confidence = value[0]['confidence'];
+                              },
+                            );
 
                             // Check confidence
                             if (_confidence > 0.8) {
@@ -247,14 +263,19 @@ class _HiddenDrawerState extends State<HiddenDrawer> {
 
         if (selectedOption == "English") {
           updateLocale(Locale("en", "US"), context);
+          langController.setLanguagecode("en");
         } else if (selectedOption == "Hindi") {
           updateLocale(Locale("hi", "IN"), context);
+          langController.setLanguagecode("hi");
         } else if (selectedOption == "Telugu") {
           updateLocale(Locale("te", "IN"), context);
+          langController.setLanguagecode("te");
         } else if (selectedOption == "Gujarati") {
           updateLocale(Locale("gu", "IN"), context);
+          langController.setLanguagecode("gu");
         } else if (selectedOption == "Marathi") {
           updateLocale(Locale("mr", "IN"), context);
+          langController.setLanguagecode("mr");
         }
       },
       child: Chip(
