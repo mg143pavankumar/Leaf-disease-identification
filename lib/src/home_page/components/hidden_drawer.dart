@@ -217,7 +217,7 @@ class _HiddenDrawerState extends State<HiddenDrawer> {
             child: Wrap(
               alignment: WrapAlignment.center,
               spacing: Dimensions.width20,
-              children: Languages.options
+              children: langController.options
                   .map((option) => buildChip(option, context))
                   .toList(),
             ),
@@ -243,27 +243,21 @@ class _HiddenDrawerState extends State<HiddenDrawer> {
             {
               langController.isLoading();
 
-              langController.setTitle(HomeScreenData.title);
-
               var newData = await translator
                   .translate(langController.getSelectLanguage, to: "en");
               langController.setSelectLanguage(newData.toString());
 
-              // var instructionData = await translator
-              //     .translate(langController.getInstruction1, to: "en");
-              langController.setInstruction1(HomeScreenData.instruction1);
+              langController.setInstructions(
+                  HomeScreenData.instruction1, HomeScreenData.instruction2);
 
-              // var instruction1Data = await translator
-              //     .translate(langController.getInstruction2, to: "en");
-              langController.setInstruction2(HomeScreenData.instruction2);
+              langController.setChooseImg(HomeScreenData.chooseImg);
 
-              var chooseImg = await translator
-                  .translate(langController.getchooseImg, to: "en");
-              langController.setChooseImg(chooseImg.toString());
+              langController.setTakePhoto(HomeScreenData.takePhoto);
 
-              var takePhoto = await translator
-                  .translate(langController.gettakePhoto, to: "en");
-              langController.setTakePhoto(takePhoto.toString());
+              langController.setNothingToShow(HomeScreenData.nothingToShow);
+
+              langController.setTitles(
+                  HomeScreenData.instructions, HomeScreenData.history);
 
               langController.notLoading();
             }
@@ -271,9 +265,9 @@ class _HiddenDrawerState extends State<HiddenDrawer> {
           case 'Hindi':
             {
               langController.isLoading();
-              var title =
-                  await translator.translate(langController.getTitle, to: "hi");
-              langController.setTitle(title.toString());
+              // var title =
+              //     await translator.translate(langController.getTitle, to: "hi");
+              // langController.setTitle(title.toString());
 
               var newData = await translator
                   .translate(langController.getSelectLanguage, to: "hi");
@@ -281,11 +275,11 @@ class _HiddenDrawerState extends State<HiddenDrawer> {
 
               var instructionData = await translator
                   .translate(langController.getInstruction1, to: "hi");
-              langController.setInstruction1(instructionData.toString());
 
               var instruction1Data = await translator
                   .translate(langController.getInstruction2, to: "hi");
-              langController.setInstruction2(instruction1Data.toString());
+              langController.setInstructions(
+                  instructionData.toString(), instruction1Data.toString());
 
               var chooseImg = await translator
                   .translate(langController.getchooseImg, to: "hi");
@@ -294,15 +288,33 @@ class _HiddenDrawerState extends State<HiddenDrawer> {
               var takePhoto = await translator
                   .translate(langController.gettakePhoto, to: "hi");
               langController.setTakePhoto(takePhoto.toString());
+
+              var nothingToShow = await translator
+                  .translate(langController.getNothingToShow, to: "hi");
+              langController.setNothingToShow(nothingToShow.toString());
+
+              var instructionTitle = await translator
+                  .translate(langController.getInstructionTitle, to: "hi");
+
+              var historyTitle = await translator
+                  .translate(langController.getHistoryTitle, to: "hi");
+
+              langController.setTitles(
+                  instructionTitle.toString(), historyTitle.toString());
+
+              // var diseaseName = await translator
+              //     .translate(langController.getDiseaseName, to: "hi");
+              // langController.setDiseaseName(diseaseName.toString());
+
               langController.notLoading();
             }
             break;
           case 'Telugu':
             {
               langController.isLoading();
-              var title =
-                  await translator.translate(langController.getTitle, to: "te");
-              langController.setTitle(title.toString());
+              // var title =
+              //     await translator.translate(langController.getTitle, to: "te");
+              // langController.setTitle(title.toString());
 
               var newData = await translator
                   .translate(langController.getSelectLanguage, to: "te");
@@ -310,11 +322,11 @@ class _HiddenDrawerState extends State<HiddenDrawer> {
 
               var instructionData = await translator
                   .translate(langController.getInstruction1, to: "te");
-              langController.setInstruction1(instructionData.toString());
 
               var instruction1Data = await translator
                   .translate(langController.getInstruction2, to: "te");
-              langController.setInstruction2(instruction1Data.toString());
+              langController.setInstructions(
+                  instructionData.toString(), instruction1Data.toString());
 
               var chooseImg = await translator
                   .translate(langController.getchooseImg, to: "te");
@@ -323,6 +335,20 @@ class _HiddenDrawerState extends State<HiddenDrawer> {
               var takePhoto = await translator
                   .translate(langController.gettakePhoto, to: "te");
               langController.setTakePhoto(takePhoto.toString());
+
+              var nothingToShow = await translator
+                  .translate(langController.getNothingToShow, to: "te");
+              langController.setNothingToShow(nothingToShow.toString());
+
+              var instructionTitle = await translator
+                  .translate(langController.getInstructionTitle, to: "te");
+
+              var historyTitle = await translator
+                  .translate(langController.getHistoryTitle, to: "te");
+
+              langController.setTitles(
+                  instructionTitle.toString(), historyTitle.toString());
+
               langController.notLoading();
             }
             break;
@@ -330,9 +356,9 @@ class _HiddenDrawerState extends State<HiddenDrawer> {
             {
               langController.isLoading();
 
-              var title =
-                  await translator.translate(langController.getTitle, to: "gu");
-              langController.setTitle(title.toString());
+              // var title =
+              //     await translator.translate(langController.getTitle, to: "gu");
+              // langController.setTitle(title.toString());
 
               var newData = await translator
                   .translate(langController.getSelectLanguage, to: "gu");
@@ -340,11 +366,11 @@ class _HiddenDrawerState extends State<HiddenDrawer> {
 
               var instructionData = await translator
                   .translate(langController.getInstruction1, to: "gu");
-              langController.setInstruction1(instructionData.toString());
 
               var instruction1Data = await translator
                   .translate(langController.getInstruction2, to: "gu");
-              langController.setInstruction2(instruction1Data.toString());
+              langController.setInstructions(
+                  instructionData.toString(), instruction1Data.toString());
 
               var chooseImg = await translator
                   .translate(langController.getchooseImg, to: "gu");
@@ -353,6 +379,19 @@ class _HiddenDrawerState extends State<HiddenDrawer> {
               var takePhoto = await translator
                   .translate(langController.gettakePhoto, to: "gu");
               langController.setTakePhoto(takePhoto.toString());
+
+              var nothingToShow = await translator
+                  .translate(langController.getNothingToShow, to: "gu");
+              langController.setNothingToShow(nothingToShow.toString());
+
+              var instructionTitle = await translator
+                  .translate(langController.getInstructionTitle, to: "gu");
+
+              var historyTitle = await translator
+                  .translate(langController.getHistoryTitle, to: "gu");
+
+              langController.setTitles(
+                  instructionTitle.toString(), historyTitle.toString());
 
               langController.notLoading();
             }
@@ -365,25 +404,38 @@ class _HiddenDrawerState extends State<HiddenDrawer> {
               //     await translator.translate(langController.getTitle, to: "mr");
               // langController.setTitle(title.toString());
 
-              // var newData = await translator
-              //     .translate(langController.getSelectLanguage, to: "mr");
-              // langController.setSelectLanguage(newData.toString());
+              var newData = await translator
+                  .translate(langController.getSelectLanguage, to: "mr");
+              langController.setSelectLanguage(newData.toString());
 
-              // var instructionData = await translator
-              //     .translate(langController.getInstruction1, to: "mr");
-              // langController.setInstruction1(instructionData.toString());
+              var instructionData = await translator
+                  .translate(langController.getInstruction1, to: "mr");
 
-              // var instruction1Data = await translator
-              //     .translate(langController.getInstruction2, to: "mr");
-              // langController.setInstruction2(instruction1Data.toString());
+              var instruction1Data = await translator
+                  .translate(langController.getInstruction2, to: "mr");
+              langController.setInstructions(
+                  instructionData.toString(), instruction1Data.toString());
 
-              // var chooseImg = await translator
-              //     .translate(langController.getchooseImg, to: "mr");
-              // langController.setChooseImg(chooseImg.toString());
+              var chooseImg = await translator
+                  .translate(langController.getchooseImg, to: "mr");
+              langController.setChooseImg(chooseImg.toString());
 
-              // var takePhoto = await translator
-              //     .translate(langController.gettakePhoto, to: "mr");
-              // langController.setTakePhoto(takePhoto.toString());
+              var takePhoto = await translator
+                  .translate(langController.gettakePhoto, to: "mr");
+              langController.setTakePhoto(takePhoto.toString());
+
+              var nothingToShow = await translator
+                  .translate(langController.getNothingToShow, to: "mr");
+              langController.setNothingToShow(nothingToShow.toString());
+
+              var instructionTitle = await translator
+                  .translate(langController.getInstructionTitle, to: "mr");
+
+              var historyTitle = await translator
+                  .translate(langController.getHistoryTitle, to: "mr");
+
+              langController.setTitles(
+                  instructionTitle.toString(), historyTitle.toString());
 
               langController.notLoading();
             }

@@ -44,10 +44,17 @@ class _HomescreenState extends State<Homescreen> {
                   children: [
                     GreetingSection(),
                     verticalSpacing(Dimensions.height30),
-                    TitleSection(title: "Instructions"),
+                    GetBuilder<LangController>(
+                      builder: (langController) => TitleSection(
+                          title: langController.getInstructionTitle),
+                    ),
                     InstructionsSection(),
                     verticalSpacing(Dimensions.height30),
-                    TitleSection(title: "History"),
+                    GetBuilder<LangController>(
+                      builder: (langController) => TitleSection(
+                        title: langController.getHistoryTitle,
+                      ),
+                    ),
                     verticalSpacing(Dimensions.height20),
                     HistorySection(size: size, diseaseService: _diseaseService)
                   ],

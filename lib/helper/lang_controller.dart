@@ -1,10 +1,11 @@
 import 'package:get/get.dart';
+import 'package:plant_disease_detector/data/languages.dart';
 import 'package:translator/translator.dart';
 
 class LangController extends GetxController {
   final translator = GoogleTranslator();
 
-  String _title = "Identification of Leaf Disease by Team Introspectors";
+  String _title = "Leaf Disease Identification by Team Introspectors";
 
   String _selectLanguage = "Choose a language";
 
@@ -16,8 +17,14 @@ class LangController extends GetxController {
 
   String _chooseImg = "Choose Image";
   String _takePhoto = "Take a Photo";
+  String _nothingToShow = "Nothing to show";
+  String _instructionTitle = "Instructions";
+  String _histroyTitle = "Histroy";
+  String _diseaseName = "";
 
   bool _loading = false;
+
+  List<dynamic> _options = Languages.options;
 
   String get getTitle => _title;
   String get getSelectLanguage => _selectLanguage;
@@ -25,6 +32,12 @@ class LangController extends GetxController {
   String get getInstruction2 => _instruction2;
   String get getchooseImg => _chooseImg;
   String get gettakePhoto => _takePhoto;
+  String get getNothingToShow => _nothingToShow;
+  String get getInstructionTitle => _instructionTitle;
+  String get getHistoryTitle => _histroyTitle;
+  String get getDiseaseName => _diseaseName;
+
+  List<dynamic> get options => _options;
 
   bool get loading => _loading;
 
@@ -39,13 +52,9 @@ class LangController extends GetxController {
     update();
   }
 
-  void setInstruction1(String data) {
-    _instruction1 = data;
-    update();
-  }
-
-  void setInstruction2(String data) {
-    _instruction2 = data;
+  void setInstructions(String instruction1, String instruction2) {
+    _instruction1 = instruction1;
+    _instruction2 = instruction2;
     update();
   }
 
@@ -56,6 +65,31 @@ class LangController extends GetxController {
 
   void setTakePhoto(String data) {
     _takePhoto = data;
+    update();
+  }
+
+  void setOptions(List<dynamic> options) {
+    _options = options;
+
+    update();
+  }
+
+  void setNothingToShow(String data) {
+    _nothingToShow = data;
+
+    update();
+  }
+
+  void setTitles(String instructionTitle, String historyTitle) {
+    _instructionTitle = instructionTitle;
+    _histroyTitle = historyTitle;
+
+    update();
+  }
+
+  void setDiseaseName(String data) {
+    _diseaseName = data;
+
     update();
   }
 
