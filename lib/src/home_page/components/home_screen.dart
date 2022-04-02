@@ -28,36 +28,33 @@ class _HomescreenState extends State<Homescreen> {
     Size size = MediaQuery.of(context).size;
 
     return GetBuilder<LangController>(
-        builder: (langController) => langController.loading
-            ? Center(
-                child: CircularProgressIndicator(),
-              )
-            : Container(
-                decoration: BoxDecoration(
-                  image: DecorationImage(
-                      image: AssetImage('assets/images/bg.jpg'),
-                      fit: BoxFit.cover),
-                  color: AppColors.kWhite,
-                ),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    GreetingSection(),
-                    verticalSpacing(Dimensions.height30),
-                    GetBuilder<LangController>(
-                      builder: (langController) => TitleSection(
-                          title: langController.getInstructionTitle),
-                    ),
-                    InstructionsSection(),
-                    verticalSpacing(Dimensions.height30),
-                    GetBuilder<LangController>(
-                      builder: (langController) => TitleSection(
-                        title: langController.getHistoryTitle,
-                      ),
-                    ),
-                    verticalSpacing(Dimensions.height20),
-                    HistorySection(size: size, diseaseService: _diseaseService)
-                  ],
-                )));
+      builder: (langController) => langController.loading
+          ? Center(
+              child: CircularProgressIndicator(),
+            )
+          : Container(
+              decoration: BoxDecoration(
+                image: DecorationImage(
+                    image: AssetImage('assets/images/bg.jpg'),
+                    fit: BoxFit.cover),
+                color: AppColors.kWhite,
+              ),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  GreetingSection(),
+                  verticalSpacing(Dimensions.height30),
+                  TitleSection(title: "instructionTitle".tr),
+                  InstructionsSection(),
+                  verticalSpacing(Dimensions.height30),
+                  TitleSection(
+                    title: "historyTitle".tr,
+                  ),
+                  verticalSpacing(Dimensions.height20),
+                  HistorySection(size: size, diseaseService: _diseaseService)
+                ],
+              ),
+            ),
+    );
   }
 }

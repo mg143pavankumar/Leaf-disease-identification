@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 import 'package:plant_disease_detector/constants/constants.dart';
 import 'package:plant_disease_detector/constants/dimensions.dart';
-import 'package:plant_disease_detector/helper/lang_controller.dart';
 import 'package:plant_disease_detector/src/widgets/small_text.dart';
+import 'package:get/get.dart';
 
 class InstructionsSection extends StatelessWidget {
   const InstructionsSection({Key? key}) : super(key: key);
@@ -24,20 +23,19 @@ class InstructionsSection extends StatelessWidget {
               elevation: 8,
               color: AppColors.kMain,
               child: ListTile(
-                  leading: CircleAvatar(
-                    backgroundColor: AppColors.kAccentLight,
-                    child: Text(
-                      '1',
-                      style: TextStyle(color: AppColors.kWhite),
-                    ),
+                leading: CircleAvatar(
+                  backgroundColor: AppColors.kAccentLight,
+                  child: Text(
+                    '1',
+                    style: TextStyle(color: AppColors.kWhite),
                   ),
-                  title: GetBuilder<LangController>(
-                    builder: (langController) => SmallText(
-                      text: langController.getInstruction1,
-                      color: AppColors.kWhite,
-                      size: Dimensions.font16,
-                    ),
-                  )),
+                ),
+                title: SmallText(
+                  text: "instruction1".tr,
+                  color: AppColors.kWhite,
+                  size: Dimensions.font16,
+                ),
+              ),
             ),
             Card(
               elevation: 8,
@@ -50,12 +48,10 @@ class InstructionsSection extends StatelessWidget {
                     style: TextStyle(color: AppColors.kWhite),
                   ),
                 ),
-                title: GetBuilder<LangController>(
-                  builder: (langController) => SmallText(
-                    text: langController.getInstruction2,
-                    color: AppColors.kWhite,
-                    size: Dimensions.font16,
-                  ),
+                title: SmallText(
+                  text: 'instruction2'.tr,
+                  color: AppColors.kWhite,
+                  size: Dimensions.font16,
                 ),
               ),
             ),

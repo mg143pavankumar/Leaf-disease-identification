@@ -91,7 +91,7 @@ class _SuggestionsState extends State<Suggestions> {
                     Dimensions.screenWidth / 20,
                   ),
                   Text(
-                    "Suggestions",
+                    "suggestions".tr,
                     style: TextStyle(
                       fontSize: Dimensions.font20,
                       fontWeight: FontWeight.w600,
