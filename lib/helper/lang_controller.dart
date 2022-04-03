@@ -10,6 +10,9 @@ class LangController extends GetxController {
   String _possibleSolution = "";
   String _languageCode = "en";
 
+  String _diseaseNameInHistory = "";
+  String _appVersion = "1.0";
+
   bool _loading = false;
 
   List<dynamic> _options = Languages.options;
@@ -21,6 +24,8 @@ class LangController extends GetxController {
   String get getPossibleCauses => _possibleCauses;
   String get getPossibleSolution => _possibleSolution;
   String get getLanguageCode => _languageCode;
+  String get getdiseaseNameInHistory => _diseaseNameInHistory;
+  String get getAppVersion => _appVersion;
 
   void setLanguagecode(String data) {
     _languageCode = data;
@@ -30,6 +35,18 @@ class LangController extends GetxController {
 
   void setDiseaseName(String data) {
     _diseaseName = data;
+
+    update();
+  }
+
+  void setAppVersion(String data) {
+    _appVersion = data;
+
+    update();
+  }
+
+  void setDiseaseNameInHistory(String data) {
+    _diseaseNameInHistory = data;
 
     update();
   }

@@ -16,6 +16,7 @@ import 'package:plant_disease_detector/src/widgets/small_text.dart';
 import 'package:plant_disease_detector/src/widgets/spacing.dart';
 import 'package:provider/provider.dart';
 import 'package:translator/translator.dart';
+import 'package:package_info_plus/package_info_plus.dart';
 
 class HiddenDrawer extends StatefulWidget {
   const HiddenDrawer({Key? key}) : super(key: key);
@@ -31,10 +32,25 @@ class _HiddenDrawerState extends State<HiddenDrawer> {
 
   LangController langController = Get.put(LangController());
 
+  PackageInfo? packageInfo;
+
   String selectedOption = "";
 
   updateLocale(Locale locale, BuildContext context) {
     Get.updateLocale(locale);
+  }
+
+  void getPackage() async {
+    packageInfo = await PackageInfo.fromPlatform();
+    String _version = packageInfo!.version;
+    print("sdfjl");
+    langController.setAppVersion(_version);
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    getPackage();
   }
 
   @override
@@ -72,12 +88,14 @@ class _HiddenDrawerState extends State<HiddenDrawer> {
                   Row(
                     mainAxisAlignment: MainAxisAlignment.end,
                     children: [
-                      SmallText(
-                        text: "version: 1.1",
-                        fontStyle: FontStyle.italic,
-                        size: Dimensions.font16 * 1.2,
-                        color: AppColors.kWhite,
-                      )
+                      GetBuilder<LangController>(
+                          builder: (_) => SmallText(
+                                text:
+                                    "version: " + langController.getAppVersion,
+                                fontStyle: FontStyle.italic,
+                                size: Dimensions.font16 * 1.2,
+                                color: AppColors.kWhite,
+                              ))
                     ],
                   ),
                   Container(
