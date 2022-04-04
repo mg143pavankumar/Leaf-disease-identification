@@ -4,7 +4,6 @@ import 'package:flutter/material.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:plant_disease_detector/constants/constants.dart';
 import 'package:plant_disease_detector/constants/dimensions.dart';
-import 'package:plant_disease_detector/helper/lang_controller.dart';
 import 'package:plant_disease_detector/services/disease_provider.dart';
 import 'package:plant_disease_detector/services/hive_database.dart';
 import 'package:plant_disease_detector/src/home_page/models/disease_model.dart';
@@ -146,7 +145,7 @@ class _HistorySectionState extends State<HistorySection> {
                   mainAxisAlignment: MainAxisAlignment.end,
                   children: [
                     Container(
-                      height: Dimensions.height45 * 3,
+                      height: Dimensions.height45 * 4,
                       width: double.maxFinite,
                       decoration: BoxDecoration(
                         gradient: LinearGradient(
@@ -155,7 +154,9 @@ class _HistorySectionState extends State<HistorySection> {
                           tileMode: TileMode.mirror,
                           colors: <Color>[
                             AppColors.kMain,
-                            Color.fromARGB(44, 255, 255, 255)
+                            Color.fromARGB(139, 0, 173, 89),
+                            Color.fromARGB(86, 0, 173, 89),
+                            Colors.transparent
                           ],
                         ),
                       ),
