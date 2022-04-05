@@ -132,6 +132,7 @@ class _HistorySectionState extends State<HistorySection> {
                   boxShadow: [
                     BoxShadow(
                       color: AppColors.kAccent,
+                      offset: Offset(2, 2),
                       spreadRadius: 0.5,
                       blurRadius: (0.022 * size.height * 0.3),
                     ),
@@ -148,6 +149,11 @@ class _HistorySectionState extends State<HistorySection> {
                       height: Dimensions.height45 * 4,
                       width: double.maxFinite,
                       decoration: BoxDecoration(
+                        borderRadius: BorderRadius.only(
+                            bottomLeft:
+                                Radius.circular((0.053 * size.height * 0.3)),
+                            bottomRight:
+                                Radius.circular((0.053 * size.height * 0.3))),
                         gradient: LinearGradient(
                           begin: Alignment.bottomCenter,
                           end: Alignment.topCenter,
