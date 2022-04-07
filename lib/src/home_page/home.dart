@@ -12,9 +12,12 @@ class Home extends StatefulWidget {
   State<Home> createState() => _HomeState();
 }
 
-class _HomeState extends State<Home> {
+class _HomeState extends State<Home> with SingleTickerProviderStateMixin {
+  late AnimationController _animationController;
+
   double xOffset = 0.0, yOffset = 0.0, rotateAngle = 0.0, scaleFactor = 1.0;
   bool isDrawerOpen = false, isLoading = true;
+  bool isAnimating = false;
 
   Future<void> loading() async {
     await Future.delayed(const Duration(milliseconds: 3000));
@@ -25,6 +28,14 @@ class _HomeState extends State<Home> {
   }
 
   @override
+  void initState() {
+    super.initState();
+
+    _animationController =
+        AnimationController(vsync: this, duration: Duration(milliseconds: 200));
+  }
+
+  @override
   Widget build(BuildContext context) {
     loading();
 
@@ -32,11 +43,17 @@ class _HomeState extends State<Home> {
       backgroundColor: AppColors.kWhite,
       floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
       floatingActionButton: FloatingActionButton(
-        child: Icon(
-          isDrawerOpen ? Icons.arrow_back_ios : Icons.menu,
-          color: AppColors.kWhite,
+        child: AnimatedIcon(
+          icon: AnimatedIcons.menu_close,
+          progress: _animationController,
         ),
         onPressed: () {
+          isAnimating = !isAnimating;
+
+          isAnimating
+              ? _animationController.forward()
+              : _animationController.reverse();
+
           if (isDrawerOpen) {
             setState(() {
               xOffset = 0;
@@ -83,10 +100,6 @@ class _HomeState extends State<Home> {
               color: Color.fromARGB(66, 236, 253, 232),
             ),
           ),
-
-          // HiddenDrawer(),
-          // Homescreen(),
-
           AnimatedContainer(
             alignment: Alignment.topCenter,
             transform: Matrix4.translationValues(xOffset, yOffset, 0)

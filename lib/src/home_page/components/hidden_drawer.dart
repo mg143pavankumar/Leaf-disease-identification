@@ -43,7 +43,7 @@ class _HiddenDrawerState extends State<HiddenDrawer> {
   void getPackage() async {
     packageInfo = await PackageInfo.fromPlatform();
     String _version = packageInfo!.version;
-    print("sdfjl");
+
     langController.setAppVersion(_version);
   }
 
@@ -276,8 +276,6 @@ class _HiddenDrawerState extends State<HiddenDrawer> {
         });
 
         Get.back();
-
-        print(Languages.options[0].tr);
 
         if (selectedOption == "English") {
           updateLocale(Locale("en", "US"), context);
