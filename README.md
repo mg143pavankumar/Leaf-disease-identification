@@ -91,6 +91,25 @@ We are looking to use Technology to tackle challenges in Agriculture. And we bel
 
 
 
+## Getting started
+
+In order to get started with the application, fork the repository and create a local workspace.
+
+Install Flutter SDK, Android Studio
+
+Set the environment variables if necessary
+
+### Installation
+
+1. Clone the repo
+```sh
+git clone https://github.com/Dantusaikamal/Leaf-disease-identification.git
+```
+2. Install Flutter packages
+```sh
+flutter pub get
+```
+
 # Development
 [(Back to top)](#table-of-contents)
 
