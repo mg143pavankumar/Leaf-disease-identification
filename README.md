@@ -1,11 +1,6 @@
 <h1 align = "center">Leaf Disease Identification</h1>
 
 <p align="center">
-  
-<img src= "https://github.com/Dantusaikamal/Leaf-disease-identification/blob/main/assets/images/icon-leaf.png" width="150px" />
-
-</p>
-
 
 <p align="center">
   <img src="https://img.shields.io/github/v/release/Dantusaikamal/Leaf-disease-identification?include_prereleases">
@@ -35,9 +30,31 @@ The Machine Learning model is trained with over 6.5 Lakh images and has an accur
 
 The mobile application is very easy to use. The farmer will first capture an image of an infected leaf or can also select an image from their mobile storage. Next, the leaf image will be analyzed by our Machine learning model, which will predict the leaf disease instantly. The application will predict the disease name, and will also provide the causes and possible solutions to counter the disease.
 
-With all the required information, the farmer will take necessary actions to eliminate the disease.
+The application is divided into different modules:
 
-The mobile application is integrated into a robust machine learning model that is trained with a very large dataset.
+#### 1. Home Screen: 
+
+The home screen contains simple instructions on how to use the application to identify leaf diseases. It also stores and displays past history of identified leaf diseases.
+
+<img src= "https://github.com/Dantusaikamal/Leaf-disease-identification/blob/main/screenshots/posters/Home%20screen.png" width="600" >
+
+#### 2. Navigation Screen: 
+
+The Navigation screen contains options for the farmer to translate the application into a language of their own choice. The farmer can capture an image of a plant or select an image from their storage to know the condition of their plant.
+
+<img src= "https://github.com/Dantusaikamal/Leaf-disease-identification/blob/main/screenshots/posters/Navigation%20screen.png" width="600">
+
+#### 3. Language translation Screen: 
+
+The Language translation screen will allow the farmer to use the application in whatever language they are comfortable with.
+
+<img src= "https://github.com/Dantusaikamal/Leaf-disease-identification/blob/main/screenshots/posters/Language%20translation%20screen.png" width="600"> 
+
+#### 4. Suggestions Screen: 
+
+The Suggestions screen is the main screen which returns the name of the disease affecting the crop. It will also return possible causes and solution for the particular disease. 
+
+<img src= "https://github.com/Dantusaikamal/Leaf-disease-identification/blob/main/screenshots/posters/Suggestions%20screen.png" width="600">
 
 Apart from being accurate in predicting leaf disease and their solutions, one more particular feature that makes our application stand out from other similar applications is that our application has a language translation module. It is important to remember that if a mobile application is available only in English, then a farmer might not be able to use the application easily.
 
@@ -46,7 +63,10 @@ That is why we have developed a language translation module that will translate 
 # Demo-Preview
 
 
-https://user-images.githubusercontent.com/65682028/161835899-a34fa5ed-4ff2-4b2e-a79c-487a8fed7d4f.mp4
+
+
+https://user-images.githubusercontent.com/65682028/162416027-6ecd288c-de58-4f3b-809f-a2f2c6ab8381.mp4
+
 
 # Table of contents
 
