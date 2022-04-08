@@ -2,11 +2,6 @@
 
 <p align="center">
 
-<img src= "https://github.com/Dantusaikamal/Leaf-disease-identification/blob/main/assets/images/icon-leaf.png" width="150px" />
-
-</p>
-
-
 <p align="center">
   <img src="https://img.shields.io/github/v/release/Dantusaikamal/Leaf-disease-identification?include_prereleases">
   <img src="https://img.shields.io/github/last-commit/Dantusaikamal/Leaf-disease-identification">
@@ -71,8 +66,6 @@ That is why we have developed a language translation module that will translate 
 
 
 https://user-images.githubusercontent.com/65682028/162416027-6ecd288c-de58-4f3b-809f-a2f2c6ab8381.mp4
-
-
 
 
 # Table of contents
