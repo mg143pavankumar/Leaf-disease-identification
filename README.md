@@ -1,19 +1,19 @@
-# Leaf-disease-identification
+<h1 align = "center">Leaf Disease Identification</h1>
 
 <p align="center">
   
-<img src= "https://github.com/Dantusaikamal/Leaf-disease-identification/blob/main/assets/images/plant.png">
+<img src= "https://github.com/Dantusaikamal/Leaf-disease-identification/blob/main/assets/images/icon-leaf.png" width="150px" />
 
 </p>
 
 
-
-
-![GitHub release (latest by date including pre-releases)](https://img.shields.io/github/v/release/Dantusaikamal/Leaf-disease-identification?include_prereleases)
-![GitHub last commit](https://img.shields.io/github/last-commit/Dantusaikamal/Leaf-disease-identification)
-![GitHub issues](https://img.shields.io/github/issues-raw/Dantusaikamal/Leaf-disease-identification)
-![GitHub pull requests](https://img.shields.io/github/issues-pr/Dantusaikamal/Leaf-disease-identification)
-[![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](https://opensource.org/licenses/MIT)
+<p align="center">
+  <img src="https://img.shields.io/github/v/release/Dantusaikamal/Leaf-disease-identification?include_prereleases">
+  <img src="https://img.shields.io/github/last-commit/Dantusaikamal/Leaf-disease-identification">
+  <img src="https://img.shields.io/github/issues-raw/Dantusaikamal/Leaf-disease-identification">
+  <img src="https://img.shields.io/github/issues-pr/Dantusaikamal/Leaf-disease-identification">
+  <img src="https://img.shields.io/badge/License-MIT-green.svg">
+</p>
 
 
 Agriculture is the primary source of livelihood for about 58 per cent of India’s population. Gross Value Added by agriculture, forestry and fishing is estimated at Rs 18.55 lakh crore (US$ 265.51 billion) in FY19(PE).  
@@ -47,8 +47,6 @@ That is why we have developed a language translation module that will translate 
 
 
 https://user-images.githubusercontent.com/65682028/161835899-a34fa5ed-4ff2-4b2e-a79c-487a8fed7d4f.mp4
-
-
 
 # Table of contents
 
