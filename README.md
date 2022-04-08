@@ -2,6 +2,10 @@
 
 <p align="center">
 
+<img src= "https://github.com/Dantusaikamal/Leaf-disease-identification/blob/main/assets/images/icon-leaf.png" width="150px" />
+
+</p>
+
 <p align="center">
   <img src="https://img.shields.io/github/v/release/Dantusaikamal/Leaf-disease-identification?include_prereleases">
   <img src="https://img.shields.io/github/last-commit/Dantusaikamal/Leaf-disease-identification">
@@ -36,26 +40,33 @@ The application is divided into different modules:
 
 The home screen contains simple instructions on how to use the application to identify leaf diseases. It also stores and displays past history of identified leaf diseases.
 
+<p align="center">
 <img src= "https://github.com/Dantusaikamal/Leaf-disease-identification/blob/main/screenshots/posters/Home%20screen.png" width="600" >
+</p>
 
 #### 2. Navigation Screen: 
 
 The Navigation screen contains options for the farmer to translate the application into a language of their own choice. The farmer can capture an image of a plant or select an image from their storage to know the condition of their plant.
 
+<p align="center">
 <img src= "https://github.com/Dantusaikamal/Leaf-disease-identification/blob/main/screenshots/posters/Navigation%20screen.png" width="600">
+</p>
 
 #### 3. Language translation Screen: 
 
 The Language translation screen will allow the farmer to use the application in whatever language they are comfortable with.
 
+<p align="center">
 <img src= "https://github.com/Dantusaikamal/Leaf-disease-identification/blob/main/screenshots/posters/Language%20translation%20screen.png" width="600"> 
+</p>
 
 #### 4. Suggestions Screen: 
 
 The Suggestions screen is the main screen which returns the name of the disease affecting the crop. It will also return possible causes and solution for the particular disease. 
 
+<p align="center">
 <img src= "https://github.com/Dantusaikamal/Leaf-disease-identification/blob/main/screenshots/posters/Suggestions%20screen.png" width="600">
-
+</p>
 Apart from being accurate in predicting leaf disease and their solutions, one more particular feature that makes our application stand out from other similar applications is that our application has a language translation module. It is important to remember that if a mobile application is available only in English, then a farmer might not be able to use the application easily.
 
 That is why we have developed a language translation module that will translate our application into 15 widely spoken languages in India. We will soon expand it to 22 languages that are commonly spoken in India. This will make our application more accessible for the farmers. 
